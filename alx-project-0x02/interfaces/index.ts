@@ -17,7 +17,13 @@ export interface Post {
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode; 
+  children: ReactNode;
   size?: "small" | "medium" | "large";
   shape?: "rounded-sm" | "rounded-md" | "rounded-full";
+}
+
+export interface PostProps {
+  title: string;
+  content: string;
+  userId: number;
 }
