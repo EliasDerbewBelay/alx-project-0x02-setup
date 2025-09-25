@@ -2,11 +2,21 @@ import Link from "next/link";
 const Header: React.FC = () => {
   return (
     <div>
-      <header className="flex justify-between px-4 py-2">
-        <div>ALX Project 2</div>
+      <header className="flex justify-between items-center px-5 py-4 shadow">
+        <div className="font-semibold text-2xl">ALX Project 2</div>
         <div className="flex gap-5">
-          <Link href="/home">Home</Link>
-          <Link href="/about">About</Link>
+          <Link
+            className="text-xl font-extralight hover:text-blue-600 cursor-pointer"
+            href="/home"
+          >
+            Home
+          </Link>
+          <Link
+            className="text-xl font-extralight hover:text-blue-600 cursor-pointer"
+            href="/about"
+          >
+            About
+          </Link>
         </div>
       </header>
     </div>
