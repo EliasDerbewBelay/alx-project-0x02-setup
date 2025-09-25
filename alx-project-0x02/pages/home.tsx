@@ -1,9 +1,9 @@
-import Header from "@/components/layout/Header";
 const Home: React.FC = () => {
   return (
     <div>
-      <Header />
-      <main></main>
+      <main>
+        <h1>this is the main page home component</h1>
+      </main>
     </div>
   );
 };
