@@ -1,43 +1,11 @@
 import Header from "@/components/layout/Header";
-import { useEffect, useState } from "react";
 import PostCard from "@/components/common/PostCard";
+import { PostsPageProps } from "@/interfaces";
 
-const Posts: React.FC = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-        const data = await response.json();
-        setPosts(data);
-      } catch (err) {
-        console.error("Fetching Error: ", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  if (loading)
-    return (
-      <div min-h-screen>
-        {" "}
-        <Header />
-        <p className="font-extralight text-5xl flex justify-center items-center">
-          Loading Posts ...
-        </p>
-      </div>
-    );
+const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   return (
     <div>
       <Header />
-
       <main className="m-4">
         <h1 className="font-bold text-3xl text-slate-500">New Posts</h1>
         <div className="grid grid-cols-3 gap-4">
@@ -45,8 +13,8 @@ const Posts: React.FC = () => {
             <PostCard
               key={index}
               title={post.title}
-              content={post.body}
-              userId={post.id}
+              content={post.content}
+              userId={post.userId}
             />
           ))}
         </div>
@@ -56,3 +24,21 @@ const Posts: React.FC = () => {
 };
 
 export default Posts;
+
+// Next.js data fetching
+
+export async function getStaticProps() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await response.json();
+
+  const posts: PostProps[] = data.map((post: any) => ({
+    id: post.id,
+    userId: post.userId,
+    title: post.title,
+    content: post.body,
+  }));
+
+  return {
+    props: { posts },
+  };
+}
