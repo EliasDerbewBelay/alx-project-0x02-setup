@@ -17,6 +17,12 @@ const Header: React.FC = () => {
           >
             About
           </Link>
+          <Link
+            className="text-xl font-extralight hover:text-blue-600 cursor-pointer"
+            href="/posts"
+          >
+            Posts
+          </Link>
         </div>
       </header>
     </div>
