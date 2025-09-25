@@ -31,3 +31,18 @@ export interface PostProps {
 export interface PostsPageProps {
   posts: PostProps[];
 }
+
+export interface UsersProps {
+  name: string;
+  email: string;
+  username: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+  };
+}
+
+export interface UserPageProps {
+  users: UsersProps[];
+}
